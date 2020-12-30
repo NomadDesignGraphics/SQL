@@ -1,22 +1,22 @@
 use OkulDb
 go 
 
---iif mantığı 
+--iif mantÃ½Ã°Ã½ 
 --select Cinsiyet,
---iif (Cinsiyet ='E','Erkek','Kadın'),
+--iif (Cinsiyet ='E','Erkek','KadÃ½n'),
 --case Cinsiyet
 --	when 'E' then 'Erkek'
---	when 'K' then 'Kadın'
+--	when 'K' then 'KadÃ½n'
 --	end,
 --	case
 --	when Cinsiyet = 'E' then 'Erkek'
---	when Cinsiyet = 'K' then 'Kadın'
+--	when Cinsiyet = 'K' then 'KadÃ½n'
 --	else '-'
 --	end,
---	iif(isnull(Cinsiyet,'E')='E','Erkek','Kadın'),
+--	iif(isnull(Cinsiyet,'E')='E','Erkek','KadÃ½n'),
 --	case isnull(Cinsiyet,'E')
 --	when 'E' then 'Erkek'
---	when 'K' then 'Kadın'
+--	when 'K' then 'KadÃ½n'
 --	end
 --from Ogrenci
 
@@ -25,12 +25,12 @@ go
 
 --declare/set/if-else/goto/while/cursor/try-catch
 
---declare : namı diğer değişken atama variable verme
+--declare : namÃ½ diÃ°er deÃ°iÃ¾ken atama variable verme
 
 --declare @gokhan int
---set @gokhan = 225774
+--set @gokhan = 2
 ----//////////////////
---select @gokhan=22574
+--select @gokhan=2
 ----//////////////////
 --declare @b int=2
 
@@ -44,33 +44,33 @@ go
 
 --print concat('Toplam:' , ( @_1 + @_3 ))
 --select 'Toplam',@_1 + @_3
---select 'Çıkarma',@_1 - @_3
---select 'Çarpma',@_1 * @_3
---select 'Bölüm',cast(@fuk as float) / @_1
+--select 'Ã‡Ã½karma',@_1 - @_3
+--select 'Ã‡arpma',@_1 * @_3
+--select 'BÃ¶lÃ¼m',cast(@fuk as float) / @_1
 --select 'Kalan',@_3 % @_2
 
---MAkine bölümündeki erkek öğrenciler
+--Makine bÃ¶lÃ¼mÃ¼ndeki erkek Ã¶ÄŸrenciler
 --select *
 --from Ogrenci o join Bolum b on.BolumId=b.Id
 --where b.Ad='Makine' and o.Cinsiyet='E'
 
 
-declare @bolumad varchar(50)='Bilgisayar' --Bölüm ismini çağırmak için ready asset tag
-declare @bid int --Bölüm id çağırmak için
-declare @cinsiyet varchar(1)='E' --Cinsiyet çağırma
-declare @ad_baslangici varchar(1)='G' --Ad daki ilk harf ile eşleşen isimleri sıralatır
+declare @bolumad varchar(50)='Bilgisayar' --BÃ¶lÃ¼m ismini Ã§aÃ°Ã½rmak iÃ§in ready asset tag
+declare @bid int --BÃ¶lÃ¼m id Ã§aÃ°Ã½rmak iÃ§in
+declare @cinsiyet varchar(1)='E' --Cinsiyet Ã§aÄŸÄ±rma
+declare @ad_baslangici varchar(1)='G' --Ad daki ilk harf ile eÃ¾leÃ¾en isimleri sÃ½ralatÃ½r
 
 select @bid=Id from Bolum where Ad=@bolumad
---bölüm id sini bid ile eş görüp Bölüm
---tablosundan çekti 
+--bÃ¶lÃ¼m id sini bid ile eÃ¾ gÃ¶rÃ¼p BÃ¶lÃ¼m
+--tablosundan Ã§ekti 
 
 --select * from Ogrenci where BolumId=@bid and Cinsiyet='E'
 
---geçici tablo yada anlık hafızaya atılan tablo değişkenidir
+--geÃ§ici tablo yada anlÃ½k hafÃ½zaya atÃ½lan tablo deÃ°iÃ¾kenidir
 declare @table1 table(Id int,AdSoyad varchar(50))
 
 insert into @table1(Id,AdSoyad) 
---select Id,lower(Ad) +' '+lower(Soyad)  burası küçük yazdırır herşeyi
+--select Id,lower(Ad) +' '+lower(Soyad)  burasÃ½ kÃ¼Ã§Ã¼k yazdÃ½rÃ½r herÃ¾eyi
 select Id,Ad +' '+Soyad
 from Ogrenci 
 where BolumId=@bid 
